@@ -77,7 +77,7 @@ public class WaitTest {
     public WebDriver getDriver() {
         SeleniumWaitOptions options = SeleniumWaitOptions.builder()
                 .parseAnnotations(true)
-				.defaultWaitTime(Duration.ofSeconds(30))
+                .defaultWaitTime(Duration.ofSeconds(30))
                 .build();
       
         SeleniumWaitPlugin seleniumWaitPlugin = new SeleniumWaitPlugin(new ChromeDriver(), options);
@@ -86,9 +86,9 @@ public class WaitTest {
     
     @Test
     public void test() {
- 		WebDriver driver = getDriver();
- 		searchAmazon(driver);
- 		searchAmazonWithoutWait(driver);
+        WebDriver driver = getDriver();
+        searchAmazon(driver);
+        searchAmazonWithoutWait(driver);
         searchAmazonWithCustomWait(driver);
     }
 
