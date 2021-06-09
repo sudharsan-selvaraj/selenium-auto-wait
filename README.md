@@ -104,7 +104,6 @@ public class WaitTest {
     
     @IgnoreWait // will not automatically wait for any element interaction
     public void searchAmazonWithoutWait(WebDriver driver) {
-        WebDriver driver = getDriver();
         driver.get("https://www.amazon.in");
         new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("twotabsearchtextbox")));
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("oneplus 7", Keys.ENTER);
