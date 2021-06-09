@@ -1,12 +1,74 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
+    id 'signing'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'io.github.sudharsan-selvaraj'
+version '1.0.0'
 
 repositories {
     mavenCentral()
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+
+signing {
+    sign publishing.publications
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = "io.github.sudharsan-selvaraj"
+            artifactId = "selenium-auto-wait"
+            version = "1.0.0"
+
+            from components.java
+            pom {
+                name = 'selenium-auto-wait'
+                description = 'This library will automatically manages all weblement waits and makes you to write wait free selenium tests.'
+                url = 'https://github.com/sudharsan-selvaraj/selenium-auto-wait'
+
+                developers {
+                    developer {
+                        name = 'Sudharsan Selvaraj'
+                        email = 'sudharsanselvaraj.c@gmail.com'
+                        url = 'https://github.com/sudharsan-selvaraj'
+                        id = 'sudharsan-selvaraj'
+                    }
+                }
+                licenses {
+                    license {
+                        name = 'Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution = 'repo'
+                    }
+                }
+                scm {
+                    url = 'https://github.com/sudharsan-selvaraj/selenium-auto-wait'
+                    connection = 'scm:git:ssh://git@github.com:sudharsan-selvaraj/selenium-auto-wait.git'
+                    developerConnection = 'scm:git:ssh://git@github.com:sudharsan-selvaraj/selenium-auto-wait.git'
+                    tag = 'HEAD'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username project.findProperty("sonatypeUser")?.toString() ?: System.getenv("SONATYPE_USER")
+                password project.findProperty("sonatypePassword")?.toString() ?: System.getenv("SONATYPE_PASSWORD")
+            }
+            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        }
+    }
 }
 
 dependencies {
@@ -25,5 +87,7 @@ dependencies {
 }
 
 test {
-    useTestNG()
+    useTestNG() {
+        suites "src/test/resources/suites/testng.xml"
+    }
 }
