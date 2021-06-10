@@ -22,7 +22,6 @@ public class BaseWebDriverTest {
     public void createDriver() {
         SeleniumWaitOptions options = SeleniumWaitOptions.builder()
                 .parseAnnotations(true)
-                .packageToBeParsed("io.github.sudharsan_selvaraj")
                 .build();
         SeleniumWaitPlugin seleniumWaitPlugin = new SeleniumWaitPlugin(new ChromeDriver(), options);
         seleniumWaitPluginThreadLocal.set(seleniumWaitPlugin);

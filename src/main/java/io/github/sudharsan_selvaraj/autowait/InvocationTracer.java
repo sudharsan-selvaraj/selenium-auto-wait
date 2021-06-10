@@ -42,7 +42,7 @@ public class InvocationTracer {
         if (packageTobeParsed != null) {
             return stackTrace.getClassName().startsWith(packageTobeParsed);
         } else {
-            return stackTrace.getModuleName() == null || !stackTrace.getModuleName().startsWith("java.base");
+            return !stackTrace.isNativeMethod();
         }
     }
 }

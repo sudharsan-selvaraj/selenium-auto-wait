@@ -149,7 +149,7 @@ public class DriverEventListener implements SpyDriverListener {
     }
 
     private WebDriverWaitUtil getWaitUtil(Duration waitTime) {
-        return new WebDriverWaitUtil(driver, waitTime.toSeconds());
+        return new WebDriverWaitUtil(driver, waitTime.getSeconds());
     }
 
     private Boolean ignoreWait(SeleniumWaitOptions options, Method m) {
