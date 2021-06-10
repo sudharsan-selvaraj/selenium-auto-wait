@@ -15,14 +15,14 @@ selenium-auto-wait automatically manages all weblement waits and makes you to wr
 <dependency>
     <groupId>io.github.sudharsan-selvaraj</groupId>
     <artifactId>selenium-auto-wait</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
 </dependency> 
 ```
 
 ### Gradle
 
 ```groovy
-implementation group: 'io.github.sudharsan-selvaraj', name: 'selenium-auto-wait', version: '1.0.0'
+implementation group: 'io.github.sudharsan-selvaraj', name: 'selenium-auto-wait', version: '1.0.2'
 ```
 
 Also while downloading selenium, make sure to exclude `net.bytebuddy:byte-buddy` library by using
